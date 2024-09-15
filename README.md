@@ -1,5 +1,3 @@
-Here’s a `README.md` file for your Laravel 11 project, including installation steps and API request details based on the test cases you provided.
-
 # Laravel 11 Book API
 
 This is a simple Laravel 11 application that provides a RESTful API for managing books. The API allows you to create, retrieve, update, and delete book records.
