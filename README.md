@@ -51,6 +51,92 @@ Follow the steps below to set up the project locally:
 
 Here is the list of API endpoints for managing books, along with example request/response formats.
 
+
+API Endpoints
+-------------
+
+Here is the list of API endpoints for managing books and user authentication, along with example request/response formats.
+
+### User Authentication Endpoints
+
+#### 1\. Register a new user
+
+-   **Endpoint:** `POST /api/register`
+-   **Description:** Register a new user.
+-   **Request:**
+```json
+{
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+}
+```
+-   **Response:**
+```json
+{
+    "user": {
+    "id": 1,
+    "name": "Test User",
+    "email": "test@example.com"
+    },
+    "token": "your-api-token"
+}
+```
+-   **Status:** 201 Created
+
+#### 2\. Login a user
+
+-   **Endpoint:** `POST /api/login`
+-   **Description:** Log in an existing user.
+-   **Request:**
+```json 
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+```
+-   **Response:** 
+```json 
+{
+    "user": {
+        "id": 1,
+        "name": "Test User",
+        "email": "test@example.com"
+    },
+    "token": "your-api-token"
+}
+```
+-   **Status:** 200 OK
+
+#### 3\. Access protected route (Authenticated)
+
+-   **Endpoint:** `GET /api/user`
+-   **Description:** Access protected route, requires authentication.
+-   **Response:**
+```json 
+{
+    "id": 1,
+    "name": "Test User",
+    "email": "test@example.com"
+}
+```
+-   **Status:** 200 OK
+
+#### 4\. Unauthorized access (Unauthenticated)
+
+-   **Endpoint:** `GET /api/user`
+-   **Description:** Attempt to access a protected route without authentication.
+-   **Response:**
+```json 
+{
+    "message": "Unauthenticated."
+}
+```
+-   **Status:** 401 Unauthorized
+
+### Book Management Endpoints
+
 ### 1. Get the list of books
 - **Endpoint:** `GET /api/books`
 - **Description:** Retrieve a list of all books.
