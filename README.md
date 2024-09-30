@@ -135,7 +135,170 @@ Here is the list of API endpoints for managing books and user authentication, al
 ```
 -   **Status:** 401 Unauthorized
 
-### Book Management Endpoints
+## Authors API Routes
+
+### 1. List All Authors
+
+**Endpoint:**
+
+```
+GET /api/authors
+```
+
+**Headers:**
+
+| Key           | Value                   |
+|---------------|-------------------------|
+| Authorization | Bearer {your-auth-token} |
+
+**Response Example:**
+
+```json
+[
+    {
+        "id": 1,
+        "name": "J.K. Rowling",
+        "bio": "Author of Harry Potter",
+        "created_at": "2024-09-30T12:00:00.000000Z",
+        "updated_at": "2024-09-30T12:00:00.000000Z"
+    },
+    {
+        "id": 2,
+        "name": "George Orwell",
+        "bio": "Author of 1984",
+        "created_at": "2024-09-30T12:00:00.000000Z",
+        "updated_at": "2024-09-30T12:00:00.000000Z"
+    }
+]
+```
+
+### 2. Create a New Author
+
+**Endpoint:**
+
+```
+POST /api/authors
+```
+
+**Headers:**
+
+| Key           | Value                   |
+|---------------|-------------------------|
+| Authorization | Bearer {your-auth-token} |
+
+**Request Body:**
+
+| Field | Type   | Description           |
+|-------|--------|-----------------------|
+| name  | string | The name of the author |
+| bio   | string | The biography of the author (optional) |
+
+**Response Example:**
+
+```json
+{
+    "id": 3,
+    "name": "Mark Twain",
+    "bio": "Author of The Adventures of Tom Sawyer",
+    "created_at": "2024-09-30T12:00:00.000000Z",
+    "updated_at": "2024-09-30T12:00:00.000000Z"
+}
+```
+
+### 3. Get Author by ID
+
+**Endpoint:**
+
+```
+GET /api/authors/{id}
+```
+
+**Headers:**
+
+| Key           | Value                   |
+|---------------|-------------------------|
+| Authorization | Bearer {your-auth-token} |
+
+**Response Example:**
+
+```json
+{
+    "id": 3,
+    "name": "Mark Twain",
+    "bio": "Author of The Adventures of Tom Sawyer",
+    "created_at": "2024-09-30T12:00:00.000000Z",
+    "updated_at": "2024-09-30T12:00:00.000000Z"
+}
+```
+
+### 4. Update Author by ID
+
+**Endpoint:**
+
+```
+PUT /api/authors/{id}
+```
+
+**Headers:**
+
+| Key           | Value                   |
+|---------------|-------------------------|
+| Authorization | Bearer {your-auth-token} |
+
+**Request Body:**
+
+| Field | Type   | Description           |
+|-------|--------|-----------------------|
+| name  | string | The name of the author |
+| bio   | string | The biography of the author (optional) |
+
+**Response Example:**
+
+```json
+{
+    "id": 3,
+    "name": "Samuel Clemens",
+    "bio": "Author of The Adventures of Tom Sawyer",
+    "created_at": "2024-09-30T12:00:00.000000Z",
+    "updated_at": "2024-09-30T12:30:00.000000Z"
+}
+```
+
+### 5. Delete Author by ID
+
+**Endpoint:**
+
+```
+DELETE /api/authors/{id}
+```
+
+**Headers:**
+
+| Key           | Value                   |
+|---------------|-------------------------|
+| Authorization | Bearer {your-auth-token} |
+
+**Response Example:**
+
+```json
+{
+    "message": "Author deleted successfully"
+}
+```
+
+## Error Responses
+
+For all routes, if the provided token is invalid or missing, you will receive a `401 Unauthorized` response:
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+
+### Book Management Endpoints (unprotected routes)
+
 
 ### 1. Get the list of books
 - **Endpoint:** `GET /api/books`
