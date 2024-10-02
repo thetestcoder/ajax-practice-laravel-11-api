@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index(){
-        return [
+        return response()->json([
             'books' => Book::get(['id', 'title', 'author'])
-        ];
+        ], 200);
     }
 
     public function show(Book $book){
-        return [
+        return response()->json([
             'book' => $book
-        ];
+        ]);
     }
 
     public function store(BookStoreRequest $request){
